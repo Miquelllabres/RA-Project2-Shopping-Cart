@@ -1,0 +1,55 @@
+footer{
+	background-color:#333333;
+	color: white;
+	min-height: 30vh;
+}
+.wrapper { 
+display: flex;
+flex-direction: column;
+}
+
+
+
+
+#one {
+	text-align: center;
+	display: none;
+
+}
+#two { 
+margin-top:10vh;
+text-align: center;
+}
+.hide{
+	display: none;
+}
+li{
+	display: inline;
+	margin:1vh;
+}
+.social{
+	margin: 2vh;
+}
+.mail{
+	text-decoration: underline;
+}
+
+/********/
+/*SOCIAL*/
+/********/
+
+.pinterest{
+	width: 20px;
+}
+.instagram{
+	width:20px;
+}
+.facebook{
+	width:20px;
+}
+.twitter{
+	width: 20px;
+}
+.google{
+	width: 20px;
+}

@@ -6,30 +6,43 @@ export default class ShoppingCart{
 
     constructor(){
         console.log("creating shopping cart");
-        if(Storage){
-            // you can create a shoppingCart!
-            this.initShoppingCart();
-        } else
-        {
+        if (typeof(Storage) !== "undefined") {
+
+                let item = `${"product.sku"}`;
+
+                if(sessionStorage.getItem(item) === null){
+                        sessionStorage.setItem(item, 1);
+
+                        
+                } else {
+                    let quantity = sessionStorage.getItem(item);
+                    sessionStorage.setItem(item, parseInt(quantity)+1);
+                }
+
+        } else {
             console.log("Error! SessionStorage not supported in your browser!");
         }
     }
 
     initShoppingCart(){
         // create the sessionStorage object that will be used
-        // to store the items.
-        console.log("finished creating shopping cart");
+        // to store the items.\
+        
+
+        
     }
 
     addItemToCart(sku){
 
-    }
 
+
+    }
+    
     removeItemFromCart(sku){
 
     }
 
-    updateQuantityofItemInCart(sky,qty){
+    updateQuantityofItemInCart(sku,qty){
 
     }
 

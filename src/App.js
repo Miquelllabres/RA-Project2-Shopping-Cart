@@ -49,7 +49,7 @@ export default class App {
 
         // populate the catalog only if there are products
         if (this.productData != null) {
-            this.catalogView.addProductsToCarousel(this.products);
+            this.catalogView.addProductsToCarousel(this.products,this);
             // this.catalogView.showCatalog();
             
         }

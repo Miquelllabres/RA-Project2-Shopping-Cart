@@ -8,10 +8,6 @@ var uglify = require('gulp-uglify');   //makes a variable for uglifycss
 var gulp = require('gulp'); //make a variable that requieres gulp
 
 
-gulp.task('hello', function() {  // gulp is the variable + task
-  console.log('Hello');
-});
-
 gulp.task('css', function () {
   gulp.src('./src/css/*.css')
   	.pipe(concat('all.css')) // it needs a name
@@ -31,22 +27,22 @@ gulp.task('sass', function () {
       "maxLineLen": 80,
       "uglyComments": true
     }))
-    .pipe(rename('style.min.css'))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(rename('all.min.css'))
+    .pipe(gulp.dest('./src/css/'));
 });
 
-gulp.task('scss', function () {
-  return gulp.src('./src/scss/*.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('./dist/css'));
-    });
+// gulp.task('scss', function () {
+//   return gulp.src('./src/scss/*.scss')
+//     .pipe(sass())
+//     .pipe(gulp.dest('./src/css/'));
+//     });
 
 
 //watch
 
 gulp.task('watch', function () {
     // Endless stream mode 
-     gulp.watch('./src/scss/*.scss', ['scss'])
+     gulp.watch('./src/scss/*.scss', ['sass'])
      gulp.watch('./src/css/*.css', ['css'])
         });
  

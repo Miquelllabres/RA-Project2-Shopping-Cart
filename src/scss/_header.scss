@@ -1,0 +1,78 @@
+/*********/
+/*HEADER*/
+/*********/
+.logos{
+	height:8vh;
+	margin:10px; 
+}
+/***********/
+/*NAVIGATOR*/
+/***********/
+header{
+	position: fixed;
+	z-index: 99;
+	width: 100%;
+	background-color: white;
+}
+.clickhere{
+  border:1px solid green;
+  background:none;
+  color:white;
+}
+.flex-navigator{
+  display: flex;
+  flex-direction: row wrap;list-style: none;
+  
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+}
+.logo{
+  width: 20%;
+}
+.navigator{
+  text-align: center;
+  line-height: 40px;
+  width: 100%;
+  border-top: 1px solid grey;
+}
+.cart{
+  width: 20%;
+  position: relative;
+}
+#cartQty{
+	display: none;
+	background-color: red;
+    border-radius: 36px;
+    width: 18px;
+    height: 18px;
+    border: none;
+    color: white;
+    padding: 5px;
+    margin-left: 5vh;
+    position: absolute;
+    top: 9px;
+    left: 12px;
+}
+.logo:nth-of-type(1){
+ order: 1; 
+}
+.navigator:nth-of-type(2) { order: 3; }
+.cart:nth-of-type(3) { order: 2; }
+
+ul.nav li{
+	font-size: 0.75rem;
+	color:red;
+	text-transform: uppercase;
+    display: inline;
+    margin: 0 2vh;
+}

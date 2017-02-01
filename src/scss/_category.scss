@@ -1,0 +1,59 @@
+/*************/
+/****CATEGORY*****/
+/*************/
+.products-container {
+	display: -webkit-flex;
+   	display: flex;
+  	flex-wrap: wrap;
+    width: 100%;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2rem;
+
+}
+.text-mobile{
+	font-size: 1.5rem;
+}
+
+.mens{ 
+
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2),transparent),url("../images/laptop-category.jpg");
+    background-size: cover;
+}
+.trends{  
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2),transparent),url("../images/tv-category.jpg");
+    background-size: cover;
+}
+.glasses{  
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2),transparent),url("../images/home-audio-category.jpg");
+	background-size: cover;
+}
+.sale{ 
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2),transparent),url("../images/tablet-category.jpg");
+	background-size: cover;
+}
+.bags{  
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2),transparent),url("../images/desktop-category.jpg");
+    background-size: cover;
+}
+.womens{  
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2),transparent),url("../images/cell-category.jpg");
+ 	background-size: cover;
+}
+ .category {
+  border: 3.5px solid white;
+}
+
+.flex-2 {
+  flex: 1 1 50%;
+  height: 30vh;
+}
+.flex-1 {
+  flex: 2 1 100%;
+  height: 30vh;
+}
+.center-text{
+	text-align: center;
+    position: relative;
+      top: 50%;
+}

@@ -8,8 +8,8 @@ export default class CatalogView{
 
     constructor(){
         this.carousel = document.getElementsByClassName("owl-carousel");
+        this.theApp = null;
        
-       // this.initCarousel();
 
     }
 
@@ -50,8 +50,17 @@ export default class CatalogView{
          */
              
     }
+    onClickCartButton(theApp){
+        return function(e){
+        console.log(e.target.getAttribute("data-sku"));
+        let theSku = e.target.getAttribute("data-sku");
+        theApp.shoppingCart.addItemToCart(theSku);
+    }
+}
 
-    addProductsToCarousel(products){
+    addProductsToCarousel(products,theApp){
+
+        this.theApp = theApp;
 
         if (products === undefined || products == null){
             return ; // do not do anything! there is no data
@@ -74,35 +83,40 @@ export default class CatalogView{
 
             // create the DIV tag with class 'product-wrapper'
             let newDiv = document.createElement("div");
-            newDiv.setAttribute("class","text-align-center");
+            newDiv.setAttribute("class","product-wrapper");
             // newDiv.setAttribute("class","owl-item");
 
             // create a new IMG tag. Suggest to add data-sku attribute here too
             // so that if you 'click' on the image, it would pop up a quick-view
             // window and you can use the sku.
-            let newImg = document.createElement("img");
-            // newImg.setAttribute("height",150);
+            let newImg = document.createElement("div");
+            newImg.setAttribute("style",`background-image: url('${product.image}');height:200px; background-size:contain;background-repeat:no-repeat;background-position:center;`);
+            // newImg.setAttribute("height",200);
             // newImg.setAttribute("width",150);
             newImg.setAttribute("src", product.image);
             newImg.setAttribute("alt", `${product.name}`); // this works too
             newImg.setAttribute("data-sku",product.sku);
 
+            let newHr = document.createElement("hr");
+
+
             // create a new H3 tag to show the name
             let newH3Tag = document.createElement("h3");
-            let newH3TagTextNode = document.createTextNode(product.name);
+            newH3Tag.setAttribute("class","marginxs greytext uppercase")
+            let newH3TagTextNode = document.createTextNode(product.manufacturer);
             newH3Tag.appendChild(newH3TagTextNode);
 
             // create a new Paragraph to show a description
             let newPara = document.createElement("p");
             newPara.setAttribute("class","product-type");
-            let newParaTextNode = document.createTextNode(product.shortDescription);
+            let newParaTextNode = document.createTextNode(product.name);
             newPara.appendChild(newParaTextNode);
 
             
 
             let newPricePara = document.createElement("p");
-            newPricePara.setAttribute("class","price");
-            let newPriceParaTextNode = document.createTextNode(product.regularPrice);
+            newPricePara.setAttribute("class","price greentext");
+            let newPriceParaTextNode = document.createTextNode("$" + product.regularPrice);
             newPricePara.appendChild(newPriceParaTextNode);
 
             /* you will need similar code to create
@@ -112,25 +126,30 @@ export default class CatalogView{
             of each product.
             */
             let quickView = document.createElement("button");
-            quickView.setAttribute("class","addtocart");
+            quickView.setAttribute("class","quickview");
             quickView.setAttribute("data-sku",product.sku);
-            quickView.setAttribute("id",product.sku);
+            quickView.setAttribute("id",`qv_${product.sku}`);
+            quickView.setAttribute("type","button");
             let quickViewTextNode = document.createTextNode("Quick View");
             quickView.appendChild(quickViewTextNode);
-            // addEventListener("click",someFunction,false);
+            // quickView.addEventListener("click",this.onClickCartButton,false);
 
 
 
             let addToCart = document.createElement("button");
             addToCart.setAttribute("class","addtocart");
             addToCart.setAttribute("data-sku",product.sku);
+            addToCart.setAttribute("id",`cart_${product.sku}`);
+            addToCart.setAttribute("type", "button");
             let addToCartTextNode = document.createTextNode("Add To Cart");
             addToCart.appendChild(addToCartTextNode);
+            addToCart.addEventListener("click",this.onClickCartButton(this.theApp),false);
 
             
 
 
             newDiv.appendChild(newImg);
+            newDiv.appendChild(newHr);
             newDiv.appendChild(newH3Tag);
             newDiv.appendChild(newPara);
             newDiv.appendChild(newPricePara);

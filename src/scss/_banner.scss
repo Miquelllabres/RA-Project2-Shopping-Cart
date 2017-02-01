@@ -1,0 +1,15 @@
+/*************/
+/*FOR BANNER*/
+/************/
+.banner { 
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(rgba(0,0,0,0.4),transparent),url("../images/banner.jpg")no-repeat;
+	background-size: contain,cover;
+	min-height: 70vh;
+}
+.banner-text{
+	color: white;
+}

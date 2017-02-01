@@ -1,0 +1,37 @@
+/****SIGNUP FORM*****/
+#signup{
+	color: white;
+	background-color: green;
+	background-position:bottom;
+	background-size: 275%;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 36vh;
+}
+
+.sub-form{
+	background-color: white;
+	width: 80%;
+	margin: 0 auto;
+}
+input.email{
+	font-size: 1rem;
+	background:none;
+    width: 60%;
+    min-height: 30px;
+    border: none;
+    margin-left: 15px;
+}
+input.button:hover {
+	background-color:#66FF66;}
+input.button{
+	-webkit-appearance: none;
+	cursor: pointer;
+	color: white;
+	border: none;
+    width: 30%;
+    background-color: green;
+    min-height: 30px;
+    margin: 2px;
+    margin-right: 2px;
+}

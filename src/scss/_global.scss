@@ -1,0 +1,117 @@
+body {
+
+    margin: 0;}
+main {
+	padding-top: 30%;
+}
+*{
+  box-sizing: border-box;
+}
+p,a,li,h5{
+	font-family: 'Roboto', sans-serif;
+	font-size: 0.75rem;
+}
+p{
+	line-height: 20px;
+}
+i{
+	margin: 0.50vh;
+	color:white;
+}
+
+h1, h2, h3, h4{
+	font-family: 'Roboto mono', monospace;
+}
+
+h1{
+	font-size: 2.5rem;
+}
+h2 {
+	font-size: 1.5rem;
+}
+h3{
+	font-size: 1.25rem;
+}
+h4{
+	font-size: 1rem;
+}
+h5{
+	font-size: 1rem;
+}
+a{
+	color:white;
+}
+/************/
+/*TEXT STYLE*/
+/************/
+.letter-space{
+	letter-spacing: 2px;
+}
+.uppercase{
+	text-transform: uppercase;
+}
+.capitalize{
+	text-transform: capitalize;
+}
+.textshadow{
+	text-shadow: 1px 1px 4px dimgrey;
+}
+.thin{
+	font-weight: 100;
+}
+.fontweight{
+	font-weight: 400;
+}
+.italic{
+	font-style: italic;
+}
+.bold {
+	font-weight: bold;
+	font-style: normal;
+}
+.text-align-center{
+	text-align: center;
+}
+.text-align-left{
+	text-align: left;
+}
+
+.textdecoration{
+	text-decoration: none;
+	
+}
+.blacktext{
+	color: black;         
+}
+.dimgreytext{
+	color: dimgrey;
+}
+.greytext{
+	color: grey;
+}
+.redtext{
+	color: red;
+}
+.greentext{
+	color:green;
+}
+.pricetext{
+	color: grey;
+}
+/****************/
+/*FLOAT SETTINGS*/
+/****************/
+.right{
+	float: right;
+}
+.left{
+	float:left;
+}
+.clear{
+	clear: both;
+}
+.clearfix:after {
+	clear:both;
+	content: " ";
+	display: block;
+}
