@@ -51,7 +51,9 @@ export default class CatalogView{
              
     }
     onClickCartButton(theApp){
+       
         return function(e){
+        console.log(theApp);
         console.log(e.target.getAttribute("data-sku"));
         let theSku = e.target.getAttribute("data-sku");
         theApp.shoppingCart.addItemToCart(theSku);
@@ -61,6 +63,7 @@ export default class CatalogView{
     addProductsToCarousel(products,theApp){
 
         this.theApp = theApp;
+
 
         if (products === undefined || products == null){
             return ; // do not do anything! there is no data

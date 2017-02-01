@@ -16,6 +16,18 @@ export default class App {
         // call the initBestBuyWebService to initialize the
         // BestBuy Web Service and return the data
         this.initBestBuyWebService();
+        console.log(document.getElementById("cartIcon"));
+         this.cartIcon = document.getElementById("cartIcon");
+         this.cartIcon.addEventListener("click",this.clickCart(this),false);
+    }
+    clickCart(theApp){
+        return function(e){
+            console.log("i clicked the button");
+            console.log(theApp);
+            theApp.shoppingCart.createCartView(theApp.products);
+        }
+
+
     }
 
     initBestBuyWebService(){
