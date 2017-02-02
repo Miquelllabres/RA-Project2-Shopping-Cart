@@ -96,7 +96,7 @@ export default class CatalogView{
             newImg.setAttribute("style",`background-image: url('${product.image}');height:200px; background-size:contain;background-repeat:no-repeat;background-position:center;`);
             // newImg.setAttribute("height",200);
             // newImg.setAttribute("width",150);
-            newImg.setAttribute("src", product.image);
+            // newImg.setAttribute("src", product.image);
             newImg.setAttribute("alt", `${product.name}`); // this works too
             newImg.setAttribute("data-sku",product.sku);
 
