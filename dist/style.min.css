@@ -58,9 +58,11 @@ input.email{min-height:40px}input.button{font-size:1rem;min-height:40px}.social{
 p{font-size:1.25rem}ul.nav li{margin:0 3vh}address.p{font-size:.75rem}#cartQty{font-size:.8rem;padding-left:8px;top:0;left:2vh;width:25px;height:25px}
 .cart{width:5%;padding-left:2vh}.flex-2{height:40vh}.flex-1{height:40vh}.addtocart:hover{background-color:dimgrey}
 .addtocart:active{background-color:dimgrey}.addtocart{width:120px;font-size:1rem}
-#signup{background-size:110%;min-height:40vh}.sub-form{width:50%}}.shoppingcart{display:flex;flex-direction:row;justify-content:space-around;align-items:center;width:80%;margin:0 auto;background-color:white}
+#signup{background-size:110%;min-height:40vh}.sub-form{width:50%}}.cartcontainer{position:fixed;margin:auto;display:none;width:80%;text-align:center;background-color:white;z-index:99}
+.viewCart{width:80%;margin:0 auto}.shoppingcart{display:flex;flex-direction:row;justify-content:space-around;align-items:center;width:80%;margin:0 auto;background-color:white}
 .cartImages{height:75px;width:75px}.buttonscart{display:flex;flex-direction:column}
-.productManufaturer{color:grey}.productPrice{color:green}.remove{-webkit-appearance:none;background-color:white;border:1px solid green;font-size:.50rem;width:100px;height:20px}
+.productManufaturer{color:grey}.productPrice{color:green}.checkout{background-color:green;color:white;font-size:.50rem;width:100px;height:40px;border:1px solid green}
+.remove{-webkit-appearance:none;background-color:white;border:1px solid green;font-size:.50rem;width:100px;height:20px}
 .update{-webkit-appearance:none;background-color:white;border:1px solid green;font-size:.50rem;width:100px;height:20px}
 .owl-carousel,.owl-carousel .owl-item{-webkit-tap-highlight-color:transparent;position:relative}
 .owl-carousel{display:none;width:100%;z-index:1}.owl-carousel .owl-stage{position:relative;-ms-touch-action:pan-Y}

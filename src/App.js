@@ -16,14 +16,22 @@ export default class App {
         // call the initBestBuyWebService to initialize the
         // BestBuy Web Service and return the data
         this.initBestBuyWebService();
-        console.log(document.getElementById("cartIcon"));
+        // console.log(document.getElementById("cartIcon"));
          this.cartIcon = document.getElementById("cartIcon");
          this.cartIcon.addEventListener("click",this.clickCart(this),false);
+         this.clear = document.getElementById("clear");
+         this.clear.addEventListener("click",this.clickClear(this),false);
+    }
+
+    clickClear(theApp){
+        return function(e){
+            theApp.shoppingCart.clearCart(theApp.products);
+        }
     }
     clickCart(theApp){
         return function(e){
-            console.log("i clicked the button");
-            console.log(theApp);
+            // console.log("i clicked the button");
+            // console.log(theApp);
             theApp.shoppingCart.createCartView(theApp.products);
         }
 
