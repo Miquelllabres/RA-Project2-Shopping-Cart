@@ -50,6 +50,16 @@ export default class CatalogView{
          */
              
     }
+    // onclickquickViewItems(theApp){
+    //     return function(e){
+    //         let theSku = e.target.getAttribute("data-sku");
+    //         theApp.shoppingCart.quickViewItems(theSku);
+
+    //     }
+
+
+    // }
+
     onClickCartButton(theApp){
        
         return function(e){
@@ -135,7 +145,7 @@ export default class CatalogView{
             quickView.setAttribute("type","button");
             let quickViewTextNode = document.createTextNode("Quick View");
             quickView.appendChild(quickViewTextNode);
-            // quickView.addEventListener("click",this.onClickCartButton,false);
+            // quickView.addEventListener("click",this.onclickquickViewItems(this.theApp),false);
 
 
 

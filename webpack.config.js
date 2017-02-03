@@ -28,7 +28,7 @@ const webpack = require('webpack');
 console.log('__dirname = ' + __dirname);
 
 const PATHS = {
-    src: join(__dirname, 'src'),
+    src: join(__dirname, 'src/js'),
     fonts: join(__dirname, 'fonts'),
     build: 'build'
 };

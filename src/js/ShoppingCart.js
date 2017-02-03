@@ -6,6 +6,8 @@ export default class ShoppingCart{
     constructor(){
         this.viewcart = document.getElementsByClassName("viewCart");
         // console.log("creating shopping cart");
+        this.getCartTotal();
+        console.log("here");
        
     }
 
@@ -51,6 +53,7 @@ export default class ShoppingCart{
                     // console.log("currentQty =" + currentQty);
                 
                     totalQuantity = totalQuantity + productQty;
+
                     
                     // productQty = parseInt(productQty);
                     // currentQty = currentQty + productQty;
@@ -58,9 +61,11 @@ export default class ShoppingCart{
                     // sessionStorage.setItem( parseInt(productQty) + 1);
                 }
                     sessionStorage.setItem("quantity",totalQuantity);
+                    
 
+                
                 }
-
+                
                 
                 
 
@@ -70,7 +75,7 @@ export default class ShoppingCart{
             else{
 
 
-                console.log("there is no sku");
+                console.log("your cart is empty");
                 sessionStorage.setItem(sku.toString(),"1");
 
             }
@@ -78,7 +83,30 @@ export default class ShoppingCart{
         } else {
             console.error("Error! SessionStorage not supported in your browser!");
         }
+                    $(document).ready(function(){
+
+                        $('.cartText').hide();
+                    });
+                    
+                    console.log(this.getCartTotal());
+                    $(".addtocart").on("click", function (){
+                    $("#cartQty").val(this.getCartTotal);
+                    $("#cartQty").show();
+                    // $(".show").hide();
+                    
+
+
+                });
 }
+    getCartTotal (){
+        if (typeof(Storage) !== "undefined") {
+            if (sessionStorage !== null){
+                return sessionStorage.quantity;
+            }
+        }
+        }
+
+
     createCartView(products){
         // console.log(" I am in create cart view");
         // console.log(products);
@@ -90,7 +118,7 @@ export default class ShoppingCart{
         // console log it
         
         $(".viewCart").html("");
-
+        console.log(sessionStorage);
 
 
         for (let sku in sessionStorage){
@@ -108,10 +136,15 @@ export default class ShoppingCart{
                     // let newWindow = document.createElement("window");
                     // newWindow.setAttribute("class","cartView");
 
-                    
+
                     
                     let newDiv = document.createElement("div");
-                    newDiv.setAttribute("class","shoppingcart");
+                    newDiv.setAttribute("class","CartDiv");
+                    
+
+                    let idDiv = document.createElement("div");
+                    idDiv.setAttribute('id', `${actualProduct.sku}`)
+                    idDiv.setAttribute("class","shoppingcart");
             
 
                     let newImg = document.createElement("div");
@@ -139,12 +172,18 @@ export default class ShoppingCart{
                     let newDiv1 = document.createElement("div");
                     newDiv1.setAttribute("class","buttonscart");
 
-                    let remove = document.createElement("button");
-                    remove.setAttribute("class","remove");
-                    remove.setAttribute("type","button");
+                    let removeBtn = document.createElement("button");
+                    removeBtn.setAttribute("class","remove");
+                    removeBtn.setAttribute("type","button");
+                    console.log(actualProduct.sku);
+                    removeBtn.setAttribute("data-sku", `${actualProduct.sku}`)
                     let removeTextNode = document.createTextNode("remove");
-                    remove.appendChild(removeTextNode);
-                    // remove.addEventListener("click",this.removeItemFromCart,false);//new line
+                    removeBtn.appendChild(removeTextNode);
+                    console.log(removeBtn.addEventListener);
+                    console.log(actualProduct.sku);
+                    
+                    removeBtn.addEventListener("click",this.beforeItemIsDeleted(actualProduct.sku,this),false);//new line
+                    
 
                     let update = document.createElement("button");
                     update.setAttribute("class","update");
@@ -153,28 +192,26 @@ export default class ShoppingCart{
                     update.appendChild(updateTextNode);
                     // update.addEventListener("click",this.updateQuantityofItemInCart,false);
 
-                    let clear = document.createElement("button");
-                    clear.setAttribute("class","update");
-                    clear.setAttribute("type","button");
-                    let clearTextNode = document.createTextNode("clear");
-                    clear.appendChild(clearTextNode);
                     
-
+                    // let total = document.getElemenyById("cartQty");
+                    // total.setAttribute("value",`${sessionStorage[totalQuantity]}`);
 
 
                 
-            
-                    newDiv.appendChild(newImg);
-                    newDiv.appendChild(newH3Tag);
-                    newDiv.appendChild(newPara);
-                    newDiv.appendChild(qty);
-                    newDiv.appendChild(newDiv1);
+                    newDiv.appendChild(idDiv)
+                    idDiv.appendChild(newImg);
+                    idDiv.appendChild(newH3Tag);
+                    idDiv.appendChild(newPara);
+                    idDiv.appendChild(qty);
+                    idDiv.appendChild(newDiv1);
                     newDiv1.appendChild(update);
-                    newDiv1.appendChild(remove);
+                    newDiv1.appendChild(removeBtn);
 
                     
 
                     this.viewcart[0].appendChild(newDiv);
+                    // $('.remove').on('click', this.removeItemFromCart(actualProduct.sku));
+
                 }
 
             }
@@ -183,20 +220,45 @@ export default class ShoppingCart{
                 $('.cartcontainer').toggle();
                 $('#clear').on('click', function(){
                     $('.cartcontainer').hide();
-                    $('.hide').show();
+                    $('.cartText').show();
+                // $('#cartQty').on('click',function(){
 
+                // });
+
+                
                 });
 
+                
+                
+
+                
+     
 
 
     }
-    removeItemFromCart(sku){
-                
-         
-         }
+    
+    beforeItemIsDeleted(sku,thisShoppingCart){
 
+        return function(e){
+            thisShoppingCart.removeItemFromCart(sku);
+        }
+        
+    }
 
+    removeItemFromCart(sku,theApp,btn){
+            console.log('i am in the function')
+            // let deleteQty = document.getElemenyById(actualProduct.sku);
+            // console.log(deleteQty);
+            
+            $("[data-sku='"+sku+"']").closest(".CartDiv").remove();
+            
+           sessionStorage.removeItem(sku);
+    // }
+    }            
+    
     updateQuantityofItemInCart(sku,qty){
+
+      
 
     }
 

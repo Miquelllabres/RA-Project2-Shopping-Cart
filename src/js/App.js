@@ -22,12 +22,17 @@ export default class App {
          this.clear = document.getElementById("clear");
          this.clear.addEventListener("click",this.clickClear(this),false);
     }
-
+    //*******************************************
+    //Calls the function to clear session storage
+    //*******************************************
     clickClear(theApp){
         return function(e){
             theApp.shoppingCart.clearCart(theApp.products);
         }
     }
+    //****************************
+    //creates a shopping cart viev
+    //****************************
     clickCart(theApp){
         return function(e){
             // console.log("i clicked the button");
