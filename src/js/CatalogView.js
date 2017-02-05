@@ -36,29 +36,14 @@ export default class CatalogView{
     }
 });
  });
-
-        /*
-        You should initialize the flickicity carousel here.
-        Right now this code just adds the div tags you would need to add
-        inside the carousel 'container'.
-        Note that this.carousel refers to the div by its class attribute.
-        Since more than one tag can belong to the same class,
-        you either have to give the carousel tag an id as well...or
-        refer to the carousel div tag as this.carousel[0] using bracket
-        notation (since classes mean their *could* be more than one tag
-        belonging to that class) - see line 88 below.
-         */
              
     }
-    // onclickquickViewItems(theApp){
-    //     return function(e){
-    //         let theSku = e.target.getAttribute("data-sku");
-    //         theApp.shoppingCart.quickViewItems(theSku);
 
-    //     }
-
-
-    // }
+    clickQuickView(theApp){
+        return function(e){
+            theApp.shoppingCart.quickViewItems(theApp.products);
+        }
+    }
 
     onClickCartButton(theApp){
        
@@ -145,7 +130,7 @@ export default class CatalogView{
             quickView.setAttribute("type","button");
             let quickViewTextNode = document.createTextNode("Quick View");
             quickView.appendChild(quickViewTextNode);
-            // quickView.addEventListener("click",this.onclickquickViewItems(this.theApp),false);
+            quickView.addEventListener("click",this.clickQuickView(this.theApp),false);
 
 
 

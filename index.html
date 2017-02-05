@@ -15,15 +15,15 @@
 
 	</head>
 	<body>
-	<header>
+	<header >
 				<div class="flex-navigator">
 				    <div class="logo"><img class="logos" src="images/aloha-logo.svg" alt="logo"></div>
 				 	<div class="navigator">
 					  	<ul class="nav">
-							<li>about</li>
-							<li>shop</li>
-							<li>featured</li>
-							<li>updates</li>
+							<li><a href="#about">about</a></li>
+							<li><a href="#shop">shop</a></li>
+							<li><a href="#featured">featured</a></li>
+							<li><a href="#signup">updates</a></li>
 						</ul>
 					</div>
  				 	<div class="cart">
@@ -39,10 +39,14 @@
 
 			<!--BANNER-->
 				
-			<section class="banner text-align-center clearfix">
-				<div id="quickview"></div>
+			<section id="about" class="banner text-align-center clearfix">
+				<div id="quickviewitem"></div>
 				<div class="cartcontainer">
+				<div class="shoppingCartHead">
+				<p></p>
 				<h1 class="blacktext uppercase">your cart</h1>
+				<p class="close blacktext">[X]</p>
+				</div>
 				<div class="viewCart">
 				</div>
 				<p class="cartText uppercase greytext">your cart is empty</p>
@@ -55,7 +59,9 @@
 				
 				<div class="textshadow">
 				<h5 class="banner-text uppercase bottom-padding">want to buy</h5><h1 class="banner-text letter-space uppercase">cool shit from best buy? </h1>
-				<input type="submit" class="clickhere uppercase marginxs" value="Click here" >
+				<a href="#shop">
+				<input type="submit" class="clickhere uppercase marginxs" value="Click here">
+				</a>
 				</div>
 				
 			</section>
@@ -75,7 +81,7 @@
 
 			<!--FEATURED-->
 			<section>
-				<div class="products-container">
+				<div id="featured" class="products-container">
 					  <div class="flex-1 mens category"><div class="text-mobile uppercase center-text">laptops / ultrabooks</div></div>
 					  <div class="flex-2 trends category"><div class="text-mobile uppercase center-text">4k tv's</div></div>
 					  <div class="flex-2 glasses category "><div class="text-mobile uppercase center-text">home audio</div></div> 
@@ -87,11 +93,29 @@
 			</section>
 
 			<!--PRODUCTS SECTION-->
-			<section class="bottom-padding text-align-center clearfix ">
+			<section id="shop" class="bottom-padding text-align-center clearfix ">
 				<h2 class="top-padding  bottom-padding blacktext thin">YOU LIKE STUFF?</h2>
 				<p class="uppercase greytext bottom-padding">we got stuff</p>
 				<div>
-			<div class="owl-carousel owl-theme">
+
+				<!-- MODAL WINDOW -->
+				<div id="myModal" class="modal">
+
+				  <!-- WINDOWS CONTENT -->
+				  <div class="modal-content">
+				    <span class="closep">[×]</span>
+				    <div id="content"></div>
+				    <!-- <ul id="shoppingCartContent">
+				        <li></li>
+				    </ul>  -->
+				  </div>
+
+				</div>
+
+				<!-- CAROUSEL -->
+				
+			<div  class="owl-carousel owl-theme"></div>
+			<!-- <p class="addedProductCart uppercase">the product has been added to the cart</p> -->
 			</div>
 			</section>
 
@@ -101,9 +125,9 @@
 
 				<h2 class="top-padding bottom-padding thin">WANT TO GET CONSTANT UPDATES?</span></h2>
 				<p class="bottom-padding thin bold uppercase">Give us your mail and we won't stop emailing you</p>
-				
-				<div class="sub-form clearfix"> 
-					<input type="email" placeholder="Your Email" class="email left">
+				<p class="message uppercase">Thanks for Subscribing!!!</p>
+				<div id="form" class="sub-form clearfix"> 
+					<input type="email" placeholder="Your Email"  class="email left">
 					<input type="submit" value="SUMBIT" class="button bold right">
 				</div>
 
@@ -133,7 +157,8 @@
 					</ul>
 				</div>
   			</div>
-  			
+  			<div id="overlay"></div>
+  			<script src="src/js/main.js"></script>
   			<script src="slider/owl.carousel.min.js"></script>
   			<script src="build/bundle.js"></script>
 

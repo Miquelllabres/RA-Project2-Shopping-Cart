@@ -13,15 +13,46 @@ export default class App {
         this.products = null; // stores specifically the products
         this.catalogView = new CatalogView(); // this will display our data
         this.shoppingCart = new ShoppingCart();
+        // this.initModal();
         // call the initBestBuyWebService to initialize the
         // BestBuy Web Service and return the data
         this.initBestBuyWebService();
-        // console.log(document.getElementById("cartIcon"));
+         
          this.cartIcon = document.getElementById("cartIcon");
          this.cartIcon.addEventListener("click",this.clickCart(this),false);
+         
          this.clear = document.getElementById("clear");
          this.clear.addEventListener("click",this.clickClear(this),false);
-    }
+         
+         //this.quickview = document.getElementsByClassName("quickview");
+        //this.quickview.addEventListener("click",this.clickQuickView(this),false);
+        // $(document).on("click,.quickview",function(){
+        //     this.clickQuickView(this)
+        //     $('cartIcon').hide();
+        // });
+
+    //  }
+
+    //  clickQuickView(theApp){
+    //     return function(e){
+    //         theApp.shoppingCart.quickViewItems(theApp.products);
+    //     }
+    // }
+    
+}
+        // initModal(){
+        // // Get the modal
+        // this.modal = document.getElementById('myModal');
+
+        // // Get the <span> element that closes the modal
+        // this.closeSpan = document.getElementsByClassName("close")[0];
+        // // When the user clicks on <span> (x), close the modal
+        // this.closeSpan.onclick = function() {
+        //     $("#myModal").fadeOut(200);
+        // }
+
+      
+
     //*******************************************
     //Calls the function to clear session storage
     //*******************************************

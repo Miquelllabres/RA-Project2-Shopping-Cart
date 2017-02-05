@@ -1,14 +1,92 @@
+// .addedProductCart{
+// 	background-color:white;
+// 	width:80%;
+// 	margin:auto;
+// 	display:none;
+// }
+/* The Modal (background) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 999; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    min-height: 30vh;
+}
+
+/* The Close Button */
+.closep {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closep:hover,
+.closep:focus {
+    color: green;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+#overlay {
+	display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.shoppingCartHead{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-around;
+}
+.close:hover,
+.close:focus {
+    color: green;
+    text-decoration: none;
+    cursor: pointer;
+}
+.close{
+	font-weight: bold;
+padding-right:1vh;
+}
 .cartcontainer{
 	position:fixed;
 	margin:auto;
 	display:none;
-	width:80%;
+	width:60%;
 	text-align:center;
 	background-color:white;
 	z-index: 99;
 }
 .viewCart{
-	width:80%;
+	width:100%;
 	margin:0 auto;
 	
 }
@@ -17,7 +95,7 @@
 	flex-direction:row;
 	justify-content:space-around;
 	align-items:center;
-	width:80%;
+	width:60%;
 	margin:0 auto;
 	background-color:white;
 
@@ -53,6 +131,9 @@
 	width:100px;
 	height:40px;
 	border:1px solid green;
+}
+.qty{
+	width:50px;
 }
 .remove{
 	-webkit-appearance: none;

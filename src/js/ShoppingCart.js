@@ -1,10 +1,11 @@
-/**
- * Created by Edward_J_Apostol on 2017-01-29.
- */
+
 export default class ShoppingCart{
+
+
 
     constructor(){
         this.viewcart = document.getElementsByClassName("viewCart");
+        this.quickview = document.getElementById("myModal");
         // console.log("creating shopping cart");
         this.getCartTotal();
         console.log("here");
@@ -20,24 +21,33 @@ export default class ShoppingCart{
     }
 
     addItemToCart(sku){
+
+            
+
+$('.cartText').hide();
+        //session storage//
+
          if (typeof(Storage) !== "undefined") {
             if (sessionStorage.getItem(sku.toString()) !== null){
+                 
 
-
-                // console.log("there is a sku");
+                
                 let currentValue = sessionStorage.getItem(sku);
+                console.log(currentValue);
                 currentValue = parseInt(currentValue);
-                currentValue = currentValue +1;
+                currentValue = currentValue + 1;
                 currentValue = currentValue.toString();
                 sessionStorage.setItem(sku, currentValue);
 
+                //session storage total quantity
+
                 let totalQuantity = 0;
                 for (let i=0; i<sessionStorage.length; i++){
-                    // console.log(sessionStorage.key(i));
+                    console.log(sessionStorage.key(i));
                     let currentKey = sessionStorage.key(i);
 
                     if (sessionStorage.getItem('quantity') === null){
-                    sessionStorage.setItem('quantity',0);
+                    sessionStorage.setItem('quantity',1);
 
                 } 
 
@@ -48,56 +58,70 @@ export default class ShoppingCart{
                   
                 } else {
                     let productQty = parseInt(sessionStorage.getItem(currentKey));
-                    // console.log("currentKey = " + currentKey + "productQty = " + productQty);
+                    console.log("currentKey = " + currentKey + "productQty = " + productQty);
                     let currentQty = parseInt(sessionStorage.getItem('quantity'));
                     // console.log("currentQty =" + currentQty);
                 
                     totalQuantity = totalQuantity + productQty;
 
-                    
-                    // productQty = parseInt(productQty);
-                    // currentQty = currentQty + productQty;
-                    //sessionStorage.setItem("quantity",currentQty);
-                    // sessionStorage.setItem( parseInt(productQty) + 1);
+                
                 }
                     sessionStorage.setItem("quantity",totalQuantity);
-                    
-
                 
                 }
-                
-                
-                
-
 
             }
 
             else{
 
 
-                console.log("your cart is empty");
-                sessionStorage.setItem(sku.toString(),"1");
+                console.log("This is a new sku");
+               sessionStorage.setItem(sku.toString(),"1");
+                // total = total + total;
+                $('.cartText').show();
 
             }
 
         } else {
             console.error("Error! SessionStorage not supported in your browser!");
         }
+                    
+
                     $(document).ready(function(){
 
                         $('.cartText').hide();
                     });
                     
-                    console.log(this.getCartTotal());
+                    //*********************
+                    //displays total items on Icon cart
+                    //*********************
+
+                    let counterQuantity = this.getCartTotal();
+                    
                     $(".addtocart").on("click", function (){
-                    $("#cartQty").val(this.getCartTotal);
+                    $("#cartQty").val(counterQuantity);
                     $("#cartQty").show();
                     // $(".show").hide();
                     
 
 
-                });
+                    });
+                 }
+
+    quickViewItems(theApp,products){
+        $('#myModal').fadeIn();
+        $('.closep').on('click', function(){
+            $('#myModal').fadeOut();
+        });
+        // 
+
+        console.log('i am here')
+        console.log(products);
+
+        
 }
+
+    //gets total on session storage
     getCartTotal (){
         if (typeof(Storage) !== "undefined") {
             if (sessionStorage !== null){
@@ -105,6 +129,7 @@ export default class ShoppingCart{
             }
         }
         }
+        
 
 
     createCartView(products){
@@ -116,9 +141,12 @@ export default class ShoppingCart{
         // get the sku number
         // let currentKey = key;
         // console log it
+
+
+                 
         
         $(".viewCart").html("");
-        console.log(sessionStorage);
+        // console.log(sessionStorage);
 
 
         for (let sku in sessionStorage){
@@ -165,6 +193,7 @@ export default class ShoppingCart{
                     let qty = document.createElement("input");
                     qty.setAttribute("class","qty greytext");
                     qty.setAttribute("type", "number");
+                    qty.setAttribute("data-sku", `${actualProduct.sku}`);
                     qty.setAttribute("value",`${sessionStorage[sku]}`);
                     let qtyTextNode = document.createTextNode("Quantity");
                     qty.appendChild(qtyTextNode);
@@ -175,12 +204,10 @@ export default class ShoppingCart{
                     let removeBtn = document.createElement("button");
                     removeBtn.setAttribute("class","remove");
                     removeBtn.setAttribute("type","button");
-                    console.log(actualProduct.sku);
                     removeBtn.setAttribute("data-sku", `${actualProduct.sku}`)
                     let removeTextNode = document.createTextNode("remove");
                     removeBtn.appendChild(removeTextNode);
-                    console.log(removeBtn.addEventListener);
-                    console.log(actualProduct.sku);
+                    // console.log(actualProduct.sku);
                     
                     removeBtn.addEventListener("click",this.beforeItemIsDeleted(actualProduct.sku,this),false);//new line
                     
@@ -190,7 +217,7 @@ export default class ShoppingCart{
                     update.setAttribute("type","button");
                     let updateTextNode = document.createTextNode("update");
                     update.appendChild(updateTextNode);
-                    // update.addEventListener("click",this.updateQuantityofItemInCart,false);
+                    update.addEventListener("click",this.updateQuantityofItemInCart,false);
 
                     
                     // let total = document.getElemenyById("cartQty");
@@ -217,25 +244,27 @@ export default class ShoppingCart{
             }
             
         } 
+
+
+        //Closes Cart when clear
                 $('.cartcontainer').toggle();
                 $('#clear').on('click', function(){
                     $('.cartcontainer').hide();
-                    $('.cartText').show();
-                // $('#cartQty').on('click',function(){
-
-                // });
-
-                
+                    $('.cartText').show(); 
                 });
 
-                
-                
+        //Close cart when X
+            $('.close').on('click',function(){
+                $('.cartcontainer').fadeOut();
+            });
 
                 
      
 
 
     }
+
+    //the middle guy
     
     beforeItemIsDeleted(sku,thisShoppingCart){
 
@@ -245,22 +274,38 @@ export default class ShoppingCart{
         
     }
 
+    //remove items from cart and session storage
+
     removeItemFromCart(sku,theApp,btn){
             console.log('i am in the function')
             // let deleteQty = document.getElemenyById(actualProduct.sku);
             // console.log(deleteQty);
             
             $("[data-sku='"+sku+"']").closest(".CartDiv").remove();
+
+
             
            sessionStorage.removeItem(sku);
-    // }
     }            
     
-    updateQuantityofItemInCart(sku,qty){
+    updateQuantityofItemInCart(sku,theApp,products){
+                    let product = sessionStorage;
+                    console.log(product);
+                    
 
-      
+                }
+                
+                
 
-    }
+
+                // sessionStorage.getItem(sku);
+   
+       
+        
+                
+
+    
+        ///clears session storage
 
     clearCart(){
         sessionStorage.clear();
