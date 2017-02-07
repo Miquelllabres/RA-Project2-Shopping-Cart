@@ -49,6 +49,7 @@
 				</div>
 				<div class="viewCart">
 				</div>
+				<p class="total"></p>
 				<p class="cartText uppercase greytext">your cart is empty</p>
 				<div id="checkout">
 					<div><input id="clear" type="button" class="remove" value="clear"></div>
@@ -101,10 +102,24 @@
 				<!-- MODAL WINDOW -->
 				<div id="myModal" class="modal">
 
-				  <!-- WINDOWS CONTENT -->
+				  <!-- WINDOW CONTENT -->
 				  <div class="modal-content">
+				  <img>
 				    <span class="closep">[×]</span>
-				    <div id="content"></div>
+				    <div id="content">
+				    	
+                   
+                      <img class='cartimage' height="250" width="300" src=${img}>
+                      <hr>
+                   
+                   <div class=" textcenter">
+                   	<p class="greytext marginxs">${info}</p>
+                       <h3 class="black"> ${name}</h3>  
+                       <p class="greentext marginxs">$ ${price}</p>
+                       <button class="addtocart" id="QVaddtoCart" type="button" data-sku=${productSku} >Add to cart</button>
+                   </div>
+                 </div>
+				   
 				    <!-- <ul id="shoppingCartContent">
 				        <li></li>
 				    </ul>  -->

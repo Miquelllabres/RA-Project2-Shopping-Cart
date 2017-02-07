@@ -26,12 +26,30 @@ a
 main{
 	padding-top: 15%;
 }
+/***shoppingCart*****/
+.qty{
+	font-size:1rem;
+}
+.update{
+	width:75px;
+}
+.remove{
+	width:75px;
+}
+.buttonscart{
+	width:100px;
+}
+.checkout{
+	width:75px;
+}
+
+
 /*****HEADER****/
 #cartQty{
 	display: none;
 	width: 27px;
     height: 27px;
-    padding-left: 10px;
+    padding-left: 9px;
     font-size: 1rem;
     top: 0px;
     left: 5px;
@@ -200,5 +218,6 @@ li{
 	.sub-form{
 	width: 50%;
 }
+
 
 	}

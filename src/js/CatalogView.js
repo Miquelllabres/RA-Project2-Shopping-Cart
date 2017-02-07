@@ -8,7 +8,7 @@ export default class CatalogView{
 
     constructor(){
         this.carousel = document.getElementsByClassName("owl-carousel");
-        this.theApp = null;
+        
        
 
     }
@@ -39,11 +39,15 @@ export default class CatalogView{
              
     }
 
-    clickQuickView(theApp){
+    clickQuickView(theApp,products){
+        // console.log('middle guy');
         return function(e){
-            theApp.shoppingCart.quickViewItems(theApp.products);
+            let theSku = e.target.getAttribute("data-sku");
+            // console.log(theApp.products);
+            theApp.shoppingCart.quickViewItems(theSku,theApp.products,theApp);
         }
-    }
+     
+}
 
     onClickCartButton(theApp){
        
@@ -52,6 +56,10 @@ export default class CatalogView{
         // console.log(e.target.getAttribute("data-sku"));
         let theSku = e.target.getAttribute("data-sku");
         theApp.shoppingCart.addItemToCart(theSku);
+
+        
+        
+
     }
 }
 
@@ -89,9 +97,6 @@ export default class CatalogView{
             // window and you can use the sku.
             let newImg = document.createElement("div");
             newImg.setAttribute("style",`background-image: url('${product.image}');height:200px; background-size:contain;background-repeat:no-repeat;background-position:center;`);
-            // newImg.setAttribute("height",200);
-            // newImg.setAttribute("width",150);
-            // newImg.setAttribute("src", product.image);
             newImg.setAttribute("alt", `${product.name}`); // this works too
             newImg.setAttribute("data-sku",product.sku);
 

@@ -24,34 +24,9 @@ export default class App {
          this.clear = document.getElementById("clear");
          this.clear.addEventListener("click",this.clickClear(this),false);
          
-         //this.quickview = document.getElementsByClassName("quickview");
-        //this.quickview.addEventListener("click",this.clickQuickView(this),false);
-        // $(document).on("click,.quickview",function(){
-        //     this.clickQuickView(this)
-        //     $('cartIcon').hide();
-        // });
 
-    //  }
+     }
 
-    //  clickQuickView(theApp){
-    //     return function(e){
-    //         theApp.shoppingCart.quickViewItems(theApp.products);
-    //     }
-    // }
-    
-}
-        // initModal(){
-        // // Get the modal
-        // this.modal = document.getElementById('myModal');
-
-        // // Get the <span> element that closes the modal
-        // this.closeSpan = document.getElementsByClassName("close")[0];
-        // // When the user clicks on <span> (x), close the modal
-        // this.closeSpan.onclick = function() {
-        //     $("#myModal").fadeOut(200);
-        // }
-
-      
 
     //*******************************************
     //Calls the function to clear session storage

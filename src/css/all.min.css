@@ -3,7 +3,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
 table{border-collapse:collapse;border-spacing:0}.banner{display:flex;justify-content:center;align-items:center;background:linear-gradient(rgba(0,0,0,0.4),transparent),url("../images/banner.jpg") no-repeat;background-size:contain,cover;min-height:70vh}
 .banner-text{color:white}.owl-theme .owl-nav [class*=owl-]{display:none !important}
-.addtocart{-webkit-appearance:none;cursor:pointer;border:1px solid #008040;background-color:#008000;color:white;font-size:.50rem;margin:2vh 0}
+.cartText{display:none}.addtocart{-webkit-appearance:none;cursor:pointer;border:1px solid #008040;background-color:#008000;color:white;font-size:.50rem;margin:2vh 0}
 .quickview{margin:2vh 0;-webkit-appearance:none;background-color:white;border:1px solid green;font-size:.50rem}
 .product-type{margin-top:2vh}.price{margin-top:2vh}.cartButton{margin-bottom:1vh}
 body{margin:0}main{padding-top:30%}*{box-sizing:border-box}p,a,li,h5{font-family:'Roboto',sans-serif;font-size:.75rem}
@@ -42,7 +42,8 @@ ul.nav li a{color:red;text-decoration:none}footer{background-color:#333;color:wh
 input.button:hover{background-color:#6f6}input.button{-webkit-appearance:none;cursor:pointer;color:white;border:0;width:30%;background-color:green;min-height:30px;margin:2px;margin-right:2px}
 @media screen and (min-width:600px){h5{font-size:2rem}h1{font-size:4rem}h2{font-size:2.5rem}
 p{font-size:1.25rem;line-height:35px}li{font-size:1.25rem}a{font-size:1.25rem}main{padding-top:15%}
-#cartQty{display:none;width:27px;height:27px;padding-left:10px;font-size:1rem;top:0;left:5px}
+.qty{font-size:1rem}.update{width:75px}.remove{width:75px}.buttonscart{width:100px}
+.checkout{width:75px}#cartQty{display:none;width:27px;height:27px;padding-left:9px;font-size:1rem;top:0;left:5px}
 .logos{margin:0}.logo{font-size:10px;width:10%;margin:10px;padding-right:5vh}.clickhere{-webkit-appearance:none;font-size:1rem;width:130px}
 .banner{background-size:contain,cover;text-align:left}.banner-text{margin:0 2vh;padding-bottom:0}
 .navigator{line-height:20px;width:70%;margin:auto;padding-left:10vh;border-top:0}
@@ -63,10 +64,10 @@ p{font-size:1.25rem}ul.nav li{margin:0 3vh}address.p{font-size:.75rem}#cartQty{f
 .closep{color:#aaa;float:right;font-size:28px;font-weight:bold}.closep:hover,.closep:focus{color:green;text-decoration:none;cursor:pointer}
 #overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:#000;filter:alpha(opacity=50);-moz-opacity:.5;-khtml-opacity:.5;opacity:.5;z-index:1}
 .shoppingCartHead{display:flex;flex-direction:row;justify-content:space-around}.close:hover,.close:focus{color:green;text-decoration:none;cursor:pointer}
-.close{font-weight:bold;padding-right:1vh}.cartcontainer{position:fixed;margin:auto;display:none;width:60%;text-align:center;background-color:white;z-index:99}
-.viewCart{width:100%;margin:0 auto}.shoppingcart{display:flex;flex-direction:row;justify-content:space-around;align-items:center;width:60%;margin:0 auto;background-color:white}
+.close{font-weight:bold;padding-right:1vh}.cartcontainer{position:fixed;margin:auto;display:none;width:80%;text-align:center;background-color:white;z-index:99}
+.viewCart{width:100%;margin:0 auto}.shoppingcart{display:flex;flex-direction:row;justify-content:space-around;align-items:center;width:80%;margin:0 auto;background-color:white}
 .cartImages{height:75px;width:75px}.buttonscart{display:flex;flex-direction:column}
 .productManufaturer{color:grey}.productPrice{color:green}#checkout{display:flex;flex-direction:column;justify-content:flex-end}
-.checkout{background-color:green;color:white;font-size:.50rem;width:100px;height:40px;border:1px solid green}
-.qty{width:50px}.remove{-webkit-appearance:none;background-color:white;border:1px solid green;font-size:.50rem;width:100px;height:20px}
-.update{-webkit-appearance:none;background-color:white;border:1px solid green;font-size:.50rem;width:100px;height:20px}
+.checkout{background-color:green;color:white;font-size:.50rem;width:75px;height:20px;border:1px solid green}
+.qty{width:50px}.remove{-webkit-appearance:none;background-color:white;border:1px solid green;font-size:.50rem;width:75px;height:20px}
+.update{-webkit-appearance:none;background-color:white;border:1px solid green;font-size:.50rem;width:75px;height:20px}
