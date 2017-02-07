@@ -1,4 +1,5 @@
 
+// Template by Edward_J_Apostol finished by Miguel LLabres
 
 export default class ShoppingCart{
 

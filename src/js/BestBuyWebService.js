@@ -1,5 +1,5 @@
 /**
- * Created by Edward_J_Apostol on 2017-01-27.
+ * Template by Edward_J_Apostol finished by Miguel LLabres
  */
 
 export default class BestBuyWebService{
