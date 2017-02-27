@@ -1,7 +1,7 @@
 /**
  * Template by Edward_J_Apostol finished by Miguel LLabres
  */
-
+import StripePayment from './stripe.js';
 import BestBuyWebService from './BestBuyWebService';
 import CatalogView from './CatalogView'
 import ShoppingCart from './ShoppingCart'
@@ -23,9 +23,25 @@ export default class App {
          
          this.clear = document.getElementById("clear");
          this.clear.addEventListener("click",this.clickClear(this),false);
+
+
+         this.checkout = document.getElementById("check");
+         this.checkout.addEventListener("click",this.clickCheckOut(this),false);
+
+
+         this.stripe = new StripePayment();
+         this.stripe.newToken(this);
          
 
+
      }
+
+     clickCheckOut(theApp){
+        return function(e){
+            theApp.shoppingCart.checkOut(theApp.products);
+            console.log('hi');
+        }
+    }
 
 
     //*******************************************
@@ -41,6 +57,7 @@ export default class App {
     //****************************
     clickCart(theApp){
         return function(e){
+
             // console.log("i clicked the button");
             // console.log(theApp);
             theApp.shoppingCart.createCartView(theApp.products);

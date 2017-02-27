@@ -27,21 +27,7 @@ main{
 	padding-top: 15%;
 }
 /***shoppingCart*****/
-.qty{
-	font-size:1rem;
-}
-.update{
-	width:75px;
-}
-.remove{
-	width:75px;
-}
-.buttonscart{
-	width:100px;
-}
-.checkout{
-	width:75px;
-}
+
 
 
 /*****HEADER****/
@@ -116,16 +102,67 @@ ul.nav li{
 .cartButton{
 	margin-bottom: 1vh;
 }
+// .addtocart{
+// 	-webkit-appearance: none;
+// 	font-size: 1rem;
+// 	width: 130px;
+// }
+// .quickview{
+// 	-webkit-appearance: none;
+// 	font-size: 1rem;
+// 	width: 130px;
+// }
+//*****SHOPPINGCART & QUICKVIEW//
+.product-wrapper{
+	min-height:60vh;
+}
+.modal-content{
+	width:80% !important;
+}
+.QVimage{
+	height:150px !important;
+	width:175px !important;
+}
+#content h3 {
+	font-size:1.5rem !important;
+}
+#content p {
+	font-size:2rem !important;
+}
+.qty{
+	font-size:1rem;
+}
+.update{
+	width:100px !important;
+	font-size:0.75rem !important;
+}
+.remove{
+	width:100px !important;
+	font-size:0.75rem !important;
+}
+// .buttonscart{
+// 	width:1px;
+// }
+// #clear{
+// 	font-size:0.75rem !important;
+// }
+.checkout{
+	width:100px !important;
+	font-size:0.75rem !important;
+}
 .addtocart{
-	-webkit-appearance: none;
-	font-size: 1rem;
-	width: 130px;
+	width:100px;
+	height:30px;
+	font-size:0.75rem;
 }
 .quickview{
-	-webkit-appearance: none;
-	font-size: 1rem;
-	width: 130px;
+	width:100px;
+	height:30px;
+	font-size:0.75rem;
 }
+
+
+
 /*****SIGNUP****/
 #signup{
 	background-size: 200%;
@@ -166,6 +203,17 @@ li{
 }
 
 @media screen and (min-width: 1054px) {
+	.product-wrapper{
+	min-height:70vh;
+}
+	.viewCart{
+    overflow:auto !important;
+	
+}
+	.cartImages{
+		width: 100px !important;
+		height:100px !important;
+	}
 	br.desktop{
 		display: initial;
 	}
@@ -182,8 +230,8 @@ li{
 	font-size: 0.75rem;
 }
 	#cartQty{
-		font-size: 0.8rem;
-	padding-left: 8px;
+		font-size: 0.7rem;
+	padding-left: 7px;
     top: 0px;
     left: 2vh;
     width: 25px;
@@ -199,18 +247,18 @@ li{
 	.flex-1 {
   	height: 40vh;
 }
-	.addtocart:hover {
-	background-color: dimgrey
-}
+// 	.addtocart:hover {
+// 	background-color: dimgrey
+// }
 
-	.addtocart:active {
-  	background-color: dimgrey;
+// 	.addtocart:active {
+//   	background-color: dimgrey;
   
-}
-	.addtocart{
-		width: 120px;
-		font-size: 1rem;
-	}
+// }
+// 	.addtocart{
+// 		width: 120px;
+// 		font-size: 1rem;
+// 	}
 	#signup{
 	background-size: 110%;
     min-height: 40vh;

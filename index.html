@@ -10,7 +10,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-  <!-- <script src="src/js/main.js"></script> -->
+  
 		<title>Aloha Apparel Co.</title>
 
 	</head>
@@ -40,8 +40,9 @@
 			<!--BANNER-->
 				
 			<section id="about" class="banner text-align-center clearfix">
-				<div id="quickviewitem"></div>
+				
 				<div class="cartcontainer">
+				<div class="cartItems">
 				<div class="shoppingCartHead">
 				<p></p>
 				<h1 class="blacktext uppercase">your cart</h1>
@@ -53,13 +54,50 @@
 				<p class="cartText uppercase greytext">your cart is empty</p>
 				<div id="checkout">
 					<div><input id="clear" type="button" class="remove" value="clear"></div>
-					<div><input type="button" class="checkout" value="Checkout"></div>
+					<div><input id="check" type="button" class="checkout" value="Checkout"></div>
+					<div id="totalamount"></div>
 				</div>
 				</div>
+				<div id="payForm">
+				<form action="" method="POST" id="payment-form">
+  <span class="payment-errors"></span>
+ 
+  <div class="row">
+    <label>
+      <span>Card Number</span>
+      <input type="text" data-stripe="number"  class="Cnumber" >
+    </label>
+  </div>
+ 
+  <div class="row">
+    <label>
+      <span>CVC</span>
+      <input type="text" data-stripe="cvc" class="cvc">
+    </label>
+  </div>
+ 
+  <div class="row">
+    <label>
+      <span>Expiration (MM/YYYY)</span>
+      <input type="text" data-stripe="exp-month" class="exMon">
+    </label>
+    <input type="text" data-stripe="exp-year" class="exYear">
+  </div>
+ 
+  <button type="submit">Buy Now</button>
+</form>
+					
+				</div>
+
+				</div>
+
+<!-- Payments -->
+
+				
 		
 				
 				<div class="textshadow">
-				<h5 class="banner-text uppercase bottom-padding">want to buy</h5><h1 class="banner-text letter-space uppercase">cool shit from best buy? </h1>
+				<h5 class="banner-text uppercase bottom-padding">want to buy</h5><h1 class="banner-text letter-space uppercase">cool from best buy? </h1>
 				<a href="#shop">
 				<input type="submit" class="clickhere uppercase marginxs" value="Click here">
 				</a>
@@ -109,7 +147,7 @@
 				    <div id="content">
 				    	
                    
-                      <img class='cartimage' height="250" width="300">
+                      <img class='QVimage'>
                       <hr>
                    
                    <div class=" textcenter">
@@ -142,7 +180,7 @@
 				<p class="bottom-padding thin bold uppercase">Give us your mail and we won't stop emailing you</p>
 				<p class="message uppercase">Thanks for Subscribing!!!</p>
 				<div id="form" class="sub-form clearfix"> 
-					<input type="email" placeholder="Your Email"  class="email left">
+					<input type="email" placeholder="Your Email"  class="email left" >
 					<input type="submit" value="SUMBIT" class="button bold right">
 				</div>
 
@@ -180,6 +218,13 @@
   			<script src="slider/owl.carousel.min.js"></script>
   			<script src="build/bundle.js"></script>
   			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  			<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+   
+        Stripe.setPublishableKey('pk_test_hqzg2owgGvrmu3ysVLZICEGV');
+    
+</script>
   			
 		
 	</body>

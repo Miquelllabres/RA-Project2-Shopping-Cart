@@ -13,11 +13,11 @@ export default class ShoppingCart{
     }
 
     initShoppingCart(){
-        // create the sessionStorage object that will be used
-        
+             
     }
 
     addItemToCart(sku){
+        
 
         //session storage//
 
@@ -31,6 +31,7 @@ export default class ShoppingCart{
                 currentValue = currentValue + 1;
                 currentValue = currentValue.toString();
                 sessionStorage.setItem(sku, currentValue);
+                
 
             }
 
@@ -40,7 +41,7 @@ export default class ShoppingCart{
                 // console.log("This is a new sku");
                sessionStorage.setItem(sku.toString(),"1");
                 // total = total + total;
-                $('.cartText').hide();
+                
 
             }
 
@@ -50,6 +51,7 @@ export default class ShoppingCart{
                     
                     if( sessionStorage.getItem("quantity") == undefined){
             sessionStorage.setItem("quantity",1);
+           
         }
         else{
             let newQuantity = sessionStorage.getItem("quantity");
@@ -59,6 +61,7 @@ export default class ShoppingCart{
         }
                     this.getCartTotal();
                     $("#cartQty").show();
+                    
             
                  }
 
@@ -73,7 +76,7 @@ export default class ShoppingCart{
             for (let p=0; p<products.length; p++){
             let product = products[p];
             let productSku = product.sku;
-            console.log(product);
+            // console.log(product);
 
 
                 if (product.sku.toString() == sku.toString() ){
@@ -85,7 +88,7 @@ export default class ShoppingCart{
 
                     output = `<div class="Item-content flex">
                    
-                      <img class='cartimage' height="250" width="300" src=${img}>
+                      <img class='QVimage' src=${img}>
                     <hr>
                    <div class=" textcenter">
                         <p class="greytext marginxs">${info}</p>
@@ -110,27 +113,31 @@ export default class ShoppingCart{
     //gets total on session storage and display on the cart icon
     getCartTotal (){
         if (sessionStorage.getItem('quantity') !== "undefined") {
-            // $("#cartQty").hide();
+            $("#cartQty").show();
+            $('.cartText').hide();
+
             let currentVal = sessionStorage.getItem('quantity');
             $("#cartQty").val(currentVal);
 
-            
-                
-            }else {
+            if (sessionStorage.getItem('quantity') == undefined ){
                 $("#cartQty").hide();
+                $('.cartText').show();
+
             }
+    
+            }
+
+                
+
+            
         }
         
         
 
 
     createCartView(products){
-       
-        if (typeof(Storage) === null) {
-            
 
-            $('.cartText').show();
-        }
+     
                  
         
         $(".viewCart").html("");
@@ -139,18 +146,25 @@ export default class ShoppingCart{
 
         for (let sku in sessionStorage){
             let currentSku = sku;
+            let currentQty = sessionStorage.getItem(currentSku);
+
             // console.log(currentSku);
 
             // from the sku, get the product
             for (let product in products){
                 let currentProduct = product;
+
+
                 
                 if (products[currentProduct].sku.toString() == currentSku ){
                     // console.log(products[currentProduct]);//actual products
                     let actualProduct = products[currentProduct];
+                    let price = actualProduct.regularPrice;
+                    let subTotal = price * currentQty;
                     //build div/tags here
                     // let newWindow = document.createElement("window");
                     // newWindow.setAttribute("class","cartView");
+                    
 
 
                     
@@ -191,7 +205,8 @@ export default class ShoppingCart{
 
 
                     let total = document.createElement('p');
-                    total.setAttribute("class","greentext");
+                    total.setAttribute("id", `${subTotal}`);
+                    total.setAttribute("class","greentext subtotal");
                     let totalTextNode = document.createTextNode("total " + "$" + `${sessionStorage[sku]}` * `${actualProduct.regularPrice}`);
                     total.appendChild(totalTextNode);
 
@@ -218,10 +233,10 @@ export default class ShoppingCart{
                     update.addEventListener("click",this.beforeUpdateQuantityofItemInCart(actualProduct.sku,products),false);
 
                     
-                    // let total = document.getElemenyById("cartQty");
-                    // total.setAttribute("value",`${sessionStorage[totalQuantity]}`);
+                    // let total = document.getElemenyById("totalamount");
+                    // total.setAttribute("value",`${sessionStorage[totalQuantity]}`* `${actualProduct.regularPrice}`);
 
-
+                    
                 
                     newDiv.appendChild(idDiv)
                     idDiv.appendChild(newImg);
@@ -238,24 +253,46 @@ export default class ShoppingCart{
                     this.viewcart[0].appendChild(newDiv);
                     // $('.remove').on('click', this.removeItemFromCart(actualProduct.sku));
 
+                    
                 }
+                let CartTotal = document.getElementsByClassName("subtotal");
+
+                    
+                    let Total = parseInt(0);
+                    for (let i=0;i < CartTotal.length ;i++) {
+                        let subtotals = Number(CartTotal[i].getAttribute('id'));
+                         Total += subtotals;
+                         // console.log(subtotals)
+                         
+                    }
+                    // console.log(Total);
+                    let addTotal = `<p class='greentext'>Total Price: $ ${Total}</p>`;
+                    $('#totalamount').html(addTotal);
+
+
 
             }
             
         } 
 
 
+
+
         //Closes Cart when clear
                 $('.cartcontainer').toggle();
                 $('#clear').on('click', function(){
                     $('.cartcontainer').hide();
-                    $('.cartText').show(); 
+                    // $('.cartText').show(); 
                 });
 
         //Close cart when X
             $('.close').on('click',function(){
                 $('.cartcontainer').fadeOut();
             });
+
+            
+
+
 
                 
      
@@ -277,17 +314,37 @@ export default class ShoppingCart{
 
     removeItemFromCart(sku,theApp){
             
-
-            
             $("[data-sku='"+sku+"']").closest(".CartDiv").remove();
 
+           let removedItem = sessionStorage.getItem(sku);
+            sessionStorage.removeItem(sku);
+            let newQuantity = sessionStorage.getItem("quantity");
+            newQuantity = newQuantity - removedItem;
 
-            
-           sessionStorage.removeItem(sku);
+            sessionStorage.setItem("quantity",newQuantity);
+            let current_val = sessionStorage.getItem("quantity");
+
+
+            let CartTotal = document.getElementsByClassName("subtotal");
+
+                    
+             let Total = parseInt(0);
+            for (let i=0;i < CartTotal.length ;i++) {
+             let subtotals = Number(CartTotal[i].getAttribute('id'));
+             Total += subtotals;
+                         // console.log(subtotals)
+                         
+            }
+                    // console.log(Total);
+            let addTotal = `<p class='greentext'>Total Price: $ ${Total}</p>`;
+            $('#totalamount').html(addTotal);
+
+   
+    this.getCartTotal();
     }            
 
     beforeUpdateQuantityofItemInCart(sku,products){
-            console.log(this);
+            // console.log(this);
             let self = this;
 
         return function(e){
@@ -298,6 +355,9 @@ export default class ShoppingCart{
     }
     
     updateQuantityofItemInCart(sku,products){
+
+        
+
         // console.log(products);
 
         for (let p=0; p<sessionStorage.length; p++){
@@ -324,18 +384,7 @@ export default class ShoppingCart{
             }
 
 
-        
-
-        // let value = document.getElementById(`qty_${product.sku}`);
-        // console.log(value);
-
-
-                    // let product = $("[data-sku='"+sku+"']");
-                    // console.log(product);
-                    
-
          }   
-         
          this.createCartView();
          this.getCartTotal();
          $('#overlay').fadeOut();
@@ -349,12 +398,21 @@ export default class ShoppingCart{
                 
     }
 
+    checkOut(){
+    
+    $('#payForm').fadeIn();
+    
+
+    }
+
 
         ///clears session storage
 
     clearCart(){
         sessionStorage.clear();
         $(".viewCart").html("");
+        $("#totalamount").html("");
+        this.getCartTotal();
 
         
     }
