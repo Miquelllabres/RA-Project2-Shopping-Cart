@@ -1,0 +1,84 @@
+Add to Cart Button function 
+
+- Add to Cart button is created with an Event Listener  that calls the "middle guy" a function that gets the data-sku attribute and returns the function add to cart.
+
+	onClickCartButton(theApp){
+       
+        return function(e){
+        let theSku = e.target.getAttribute("data-sku");
+        theApp.shoppingCart.addItemToCart(theSku);   
+
+    }
+}
+
+-When user clicks on add to cart button  addtocart function is trigger an a session storage is created,then items gets added to it.If the product is already in cart,then increment the quantity by 1.
+
+
+addItemToCart(sku){  <-theSku is been transfer from the "middle guy"
+        
+
+        creating session Storage
+
+         if (typeof(Storage) !== "undefined") { <-- if session storage is undefined...
+
+            if (sessionStorage.getItem(sku.toString()) !== null){ <--it converts thesku into a String.
+
+
+            -
+                 
+                let currentValue = sessionStorage.getItem(sku);
+   
+                currentValue = parseInt(currentValue);
+            - incrementens current value +1
+                currentValue = currentValue + 1;
+
+                currentValue = currentValue.toString();
+
+                sessionStorage.setItem(sku, currentValue);
+                
+
+            }
+
+            else{
+
+
+                // console.log("This is a new sku");
+               sessionStorage.setItem(sku.toString(),"1");
+                // total = total + total;
+                
+
+            }
+
+        } else {
+            console.error("Error! SessionStorage not supported in your browser!");
+        }
+                    
+                    if( sessionStorage.getItem("quantity") == undefined){
+            sessionStorage.setItem("quantity",1);
+           
+        }
+        else{
+            let newQuantity = sessionStorage.getItem("quantity");
+            newQuantity = parseInt(newQuantity);
+            newQuantity +=1;
+            sessionStorage.setItem("quantity",newQuantity);
+        }
+                    this.getCartTotal();
+                    $("#cartQty").show();
+                    
+            
+                 }
+
+
+
+
+
+
+
+
+
+
+ then it will be added to the list of products in the cart and display SKU, possibly the name of the product, and the price. If the product is already in the cart, 
+-Once the item is added to the cart, a popup appears informing the user that the item was added successfully
+-The counter in the header updates to reflect the current number of items in the cart
+

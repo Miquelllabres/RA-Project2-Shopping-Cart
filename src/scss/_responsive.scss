@@ -113,9 +113,9 @@ ul.nav li{
 // 	width: 130px;
 // }
 //*****SHOPPINGCART & QUICKVIEW//
-.product-wrapper{
-	min-height:60vh;
-}
+// .product-wrapper{
+// 	min-height:70vh;
+// }
 .modal-content{
 	width:80% !important;
 }
@@ -203,9 +203,7 @@ li{
 }
 
 @media screen and (min-width: 1054px) {
-	.product-wrapper{
-	min-height:70vh;
-}
+
 	.viewCart{
     overflow:auto !important;
 	

@@ -20,7 +20,7 @@ export default class CatalogView{
     $(document).ready(function(){
      $('.owl-carousel').owlCarousel({
     rtl:true,
-    loop:true,
+    // loop:true,
     margin:10,
     nav:true,
     responsive:{
@@ -52,13 +52,8 @@ export default class CatalogView{
     onClickCartButton(theApp){
        
         return function(e){
-        // console.log(theApp);
-        // console.log(e.target.getAttribute("data-sku"));
         let theSku = e.target.getAttribute("data-sku");
-        theApp.shoppingCart.addItemToCart(theSku);
-
-        
-        
+        theApp.shoppingCart.addItemToCart(theSku);   
 
     }
 }
@@ -83,7 +78,7 @@ export default class CatalogView{
           * */
         for (let p=0; p<products.length; p++){
             let product = products[p];
-            // console.log(product);
+            console.log(product);
             // each product is a product object
             // use it to create the element
 
